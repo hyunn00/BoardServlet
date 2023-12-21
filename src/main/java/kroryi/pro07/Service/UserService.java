@@ -1,6 +1,5 @@
 package kroryi.pro07.Service;
 
-import kroryi.pro07.DTO.Board;
 import kroryi.pro07.DTO.User;
 
 import java.util.List;

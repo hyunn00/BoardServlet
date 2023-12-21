@@ -1,17 +1,11 @@
 package kroryi.pro07.DAO;
 
-import kroryi.pro07.DTO.Board;
 import kroryi.pro07.DTO.User;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.http.HttpResponse;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;

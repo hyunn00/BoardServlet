@@ -1,12 +1,6 @@
-<%@ page import="kroryi.pro07.DTO.User" %>
+
 <%@ page import="java.util.List" %>
-<%@ page import="kroryi.pro07.DTO.Board" %><%--
-  Created by IntelliJ IDEA.
-  User: hyunn
-  Date: 23. 12. 20.
-  Time: 오전 11:23
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="kroryi.pro07.DTO.Board" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

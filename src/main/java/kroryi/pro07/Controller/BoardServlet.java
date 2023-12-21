@@ -1,7 +1,6 @@
 package kroryi.pro07.Controller;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.RequestDispatcher;
@@ -11,7 +10,6 @@ import jakarta.servlet.annotation.*;
 import kroryi.pro07.DTO.Board;
 import kroryi.pro07.Service.BoardService;
 import kroryi.pro07.Service.BoardServiceImpl;
-import kroryi.pro07.Service.UserServiceImpl;
 
 import javax.naming.NamingException;
 

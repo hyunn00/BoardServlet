@@ -2,15 +2,12 @@ package kroryi.pro07.Controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import kroryi.pro07.Service.BoardService;
 import kroryi.pro07.Service.BoardServiceImpl;
-import kroryi.pro07.Service.UserService;
-import kroryi.pro07.Service.UserServiceImpl;
 
 import javax.naming.NamingException;
 import java.io.IOException;

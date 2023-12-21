@@ -7,11 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import kroryi.pro07.DTO.Board;
-import kroryi.pro07.DTO.User;
 import kroryi.pro07.Service.BoardService;
 import kroryi.pro07.Service.BoardServiceImpl;
-import kroryi.pro07.Service.UserService;
-import kroryi.pro07.Service.UserServiceImpl;
 
 import javax.naming.NamingException;
 import java.io.IOException;

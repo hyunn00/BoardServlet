@@ -12,7 +12,6 @@ import kroryi.pro07.Service.UserServiceImpl;
 
 import javax.naming.NamingException;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/member-edit")
 public class MemberEdit extends HttpServlet {
