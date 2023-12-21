@@ -4,6 +4,7 @@ import kroryi.pro07.DAO.UserDAO;
 import kroryi.pro07.DTO.User;
 
 import javax.naming.NamingException;
+import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAO();
@@ -12,8 +13,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User select(String userid) {
-        User user = userDAO.select(userid);
+    public List<User> list() {
+        List<User> userList = (List<User>)userDAO.selectList();
+        return userList;
+    }
+    @Override
+    public User select(String uid) {
+        User user = userDAO.select(uid);
         return user;
     }
 
@@ -30,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int delete(String userid) {
-        int result = userDAO.delete(userid);
+    public int delete(int uid) {
+        int result = userDAO.delete(uid);
         return result;
     }
 

@@ -37,11 +37,14 @@ public class MemberSignIn extends HttpServlet {
                 System.out.println("비밀번호가 일치하지 않습니다.");
                 response.sendRedirect("/sign-in.jsp");
             } else {
-                if(userid.equals("admin")) {
-                    response.sendRedirect("/admin.jsp");
-                }
                 System.out.println("로그인 성공");
-                response.sendRedirect("/home.jsp");
+                if(userid.equals("admin")) {
+                    System.out.println("관리자 계정 로그인");
+                    response.sendRedirect("/admin.jsp");
+                } else {
+                    System.out.println("일반 회원 로그인");
+                    response.sendRedirect("/home.jsp");
+                }
             }
         }
     }

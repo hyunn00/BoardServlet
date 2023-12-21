@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1><%= "Admin page" %></h1>
+<p>This page can only be accessed with an admin account.</p>
+<a href="/member">Member List</a><br>
+<a href="/index.jsp">Sign Out</a><br>
 </body>
 </html>

@@ -2,15 +2,20 @@ package kroryi.pro07.DAO;
 
 import kroryi.pro07.DTO.Board;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.io.*;
-import java.sql.SQLException;
-import java.sql.Savepoint;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BoardDAO extends JDBCConnection {
+public class BoardDAO {
+    Context initContext = new InitialContext();
+    Context envContext = (Context) initContext.lookup("java:comp/env");
+    DataSource dataSource = (DataSource) envContext.lookup("jdbc/MyDB");
     private FileInputStream fis;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -18,6 +23,15 @@ public class BoardDAO extends JDBCConnection {
     }
 
     public int insert(Board board){
+        Connection con;
+        PreparedStatement psmt = null;
+        try {
+            con = dataSource.getConnection();
+            con.setAutoCommit(false);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         int result = 0;
         String sql;
         if(board.getFile() != null)
@@ -51,11 +65,29 @@ public class BoardDAO extends JDBCConnection {
             }
             System.out.println("게시글 등록 시, 예외 발생");
             e.printStackTrace();
+        } finally {
+            try {
+                if(psmt != null) {
+                    psmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }
 
     public List<Board> selectList() {
+        Connection con;
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         LinkedList<Board> boardList = new LinkedList<>();
         String sql = " SELECT * "
                 + " FROM Board "
@@ -78,12 +110,34 @@ public class BoardDAO extends JDBCConnection {
         } catch (Exception e) {
             System.out.println("게시글 목록 조회시 예외 발생");
             e.printStackTrace();
+        } finally {
+            try {
+                if(rs != null) {
+                    rs.close();
+                }
+                if(stmt != null) {
+                    stmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
 
         return boardList;
     }
 
     public Board select(int board_no) {
+        Connection con;
+        PreparedStatement psmt = null;
+        ResultSet rs = null;
+        try {
+            con = dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         Board board = new Board();
         String sql = " SELECT * "
                 + " FROM Board "
@@ -122,11 +176,33 @@ public class BoardDAO extends JDBCConnection {
         } catch(Exception e) {
             System.out.println("게시글 상세 조회시 예외 발생");
             e.printStackTrace();
+        } finally {
+            try {
+                if(rs != null) {
+                    rs.close();
+                }
+                if(psmt != null) {
+                    psmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
+
         return board;
     }
 
     public int update(Board board) {
+        Connection con;
+        PreparedStatement psmt = null;
+        try {
+            con = dataSource.getConnection();
+            con.setAutoCommit(false);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         int result = 0;
         String sql;
         if(board.getFile() != null) {
@@ -174,12 +250,30 @@ public class BoardDAO extends JDBCConnection {
             }
 
             e.printStackTrace();
+        } finally {
+            try {
+                if(psmt != null) {
+                    psmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return result;
     }
 
     public int delete(int board_no) {
+        Connection con;
+        PreparedStatement psmt = null;
+        try {
+            con = dataSource.getConnection();
+            con.setAutoCommit(false);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         int result = 0;
         String sql = " DELETE FROM Board "
                 + " WHERE board_no = ? ";
@@ -204,11 +298,29 @@ public class BoardDAO extends JDBCConnection {
             }
 
             e.printStackTrace();
+        } finally {
+            try {
+                if(psmt != null) {
+                    psmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }
 
     public int selectTotalCount() {
+        Connection con;
+        ResultSet rs = null;
+        Statement stmt = null;
+        try {
+            con = dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         String sql = " SELECT count(*) "
                 + " FROM Board "
                 + " ORDER BY board_no DESC ";
@@ -223,12 +335,30 @@ public class BoardDAO extends JDBCConnection {
         } catch (SQLException e) {
             System.out.println("총 게시물 개수 조회시 오류 발생");
             e.printStackTrace();
+        } finally {
+            try {
+                if(stmt != null) {
+                    stmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return count;
     }
 
     public List<Board> selectPageList(int pageNo) {
+        Connection con;
+        ResultSet rs = null;
+        PreparedStatement psmt = null;
+        try {
+            con = dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         LinkedList<Board> boardList = new LinkedList<>();
         String sql = " SELECT * "
                 + " FROM Board "
@@ -248,8 +378,21 @@ public class BoardDAO extends JDBCConnection {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                if(rs != null) {
+                    rs.close();
+                }
+                if(psmt != null) {
+                    psmt.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return boardList;
     }
 }
+
