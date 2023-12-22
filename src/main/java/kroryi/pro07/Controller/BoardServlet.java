@@ -13,7 +13,7 @@ import kroryi.pro07.Service.BoardServiceImpl;
 
 import javax.naming.NamingException;
 
-@WebServlet(name = "board", value = "/board")
+@WebServlet("/board")
 public class BoardServlet extends HttpServlet {
     BoardService boardService;
 
@@ -35,7 +35,7 @@ public class BoardServlet extends HttpServlet {
         request.setAttribute("BoardList", boardList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("board-list.jsp");
-        dispatcher.forward(request, response);
+        dispatcher.include(request, response);
     }
 
     public void destroy() {

@@ -112,7 +112,7 @@ public class UserDAO {
         return result;
     }
 
-    public User select(String uid){
+    public User select(String userid){
         Connection con;
         PreparedStatement psmt = null;
         ResultSet rs = null;
@@ -125,11 +125,11 @@ public class UserDAO {
         User user = new User();
         String sql = "SELECT * "
                 + " FROM User"
-                + " WHERE uid = ?";
+                + " WHERE userid = ?";
 
         try{
             psmt = con.prepareStatement(sql);
-            psmt.setString(1, uid);
+            psmt.setString(1, userid);
             rs = psmt.executeQuery();
 
             if(rs.next()) {
@@ -138,8 +138,8 @@ public class UserDAO {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
             } else {
-                System.out.println(uid + " 사용자가 없습니다.");
-                uid=null;
+                System.out.println(userid + " 사용자가 없습니다.");
+                userid=null;
             }
         } catch (SQLException e) {
             e.printStackTrace();

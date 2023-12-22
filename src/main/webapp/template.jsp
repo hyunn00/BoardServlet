@@ -9,7 +9,7 @@
 <%@ include file="views/includes/Header.jsp"%>
 <div id="content">
   <%@ include file="views/includes/Sidebar.jsp"%>
-  <a href="#">Download this CSS Layout</a>
+  <jsp:include page="${contentPage}"></jsp:include>
 </div>
 <%@ include file="views/includes/Footer.jsp"%>
 </body>

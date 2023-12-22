@@ -33,7 +33,7 @@ public class MemberServlet extends HttpServlet {
         request.setAttribute("UserList", userList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
-        dispatcher.forward(request, response);
+        dispatcher.include(request, response);
     }
 
     public void destroy() {

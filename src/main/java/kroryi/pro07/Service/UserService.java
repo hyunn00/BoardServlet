@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
     List<User> list();
-    User select(String uid);
+    User select(String userid);
     int insert(User user);
     int update(User user);
     int delete(int uid);

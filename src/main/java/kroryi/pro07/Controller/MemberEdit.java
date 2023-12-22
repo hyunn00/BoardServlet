@@ -27,8 +27,8 @@ public class MemberEdit extends HttpServlet {
         }
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
-        String uid = request.getParameter("uid");
-        User user = userService.select(uid);
+        String userid = request.getParameter("userid");
+        User user = userService.select(userid);
         System.out.println("11111->" +user);
         request.setAttribute("User", user);
 

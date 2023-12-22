@@ -1,0 +1,36 @@
+*{
+    border: violet 1px solid;
+    margin : 0;
+}
+#wrapper {
+    display: block;
+}
+
+#header {
+    height : 20vh;
+}
+
+#content {
+    display: flex;
+    width : 100%;
+    height : 60vh;
+}
+
+#leftcolumn {
+    width : 20%;
+}
+#leftcolumn ul {
+    padding-left: 0;
+}
+#leftcolumn ul li {
+    list-style: none;
+}
+#rightcolumn {
+    width : 80%;
+}
+
+#footer {
+    height :10vh;
+    text-align: center;
+    line-height: 10vh;
+}

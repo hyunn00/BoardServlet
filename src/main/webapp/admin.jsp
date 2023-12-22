@@ -13,7 +13,21 @@
 <body>
 <h1><%= "Admin page" %></h1>
 <p>This page can only be accessed with an admin account.</p>
+<%
+    String userid = (String) session.getAttribute("userid");
+    String username = (String) session.getAttribute("username");
+    if(userid != null && username != null) {
+%>
+<p><%=username%>(<%=userid%>)님 반갑습니다.</p>
+<%
+} else {
+%>
+<p>세션이 없습니다.</p>
+<a href="/sign-in.jsp">Sign In</a><br>
+<%
+    }
+%>
 <a href="/member">Member List</a><br>
-<a href="/index.jsp">Sign Out</a><br>
+<a href="/sign-out">Sign Out</a><br>
 </body>
 </html>
